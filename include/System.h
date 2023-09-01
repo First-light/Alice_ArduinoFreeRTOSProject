@@ -11,15 +11,15 @@
 #define USART_BaudRate              115200
 
 //task
-#define USART_IRQHandler_STK        128
-#define USART_IRQHandler_PRI        0x10
-#define USART_Buffer_STK            256
+#define USART_IRQHandler_STK            128
+#define USART_IRQHandler_PRI            0x10
+#define USART_Buffer_STK                128
 
-#define Task_RGBLED_STK             64
-#define Task_RGBLED_PRI             0x00
+#define Task_RGBLED_STK                 64
+#define Task_RGBLED_PRI                 0x00
 
-#define Task_BoardLED_STK             32
-#define Task_BoardLED_PRI             0x00
+#define Task_State_STK                  128
+#define Task_State_PRI                  0x10
 /******************************引脚定义**********************************/
 #define RGB_PIN_RED                 9
 #define RGB_PIN_GREED               10
@@ -27,23 +27,32 @@
 #define LED_BOARD                   13
 
 //注意13 11 10 9 8 7号脚pwm有问题
-/******************************进程函数定义**********************************/
-void System_Init(void);
+/******************************初始化函数定义**********************************/
 void Device_Init();
-void Task_Start(void);
-void Alice_WakingUp();
 
+/******************************核心任务函数定义**********************************/
+void Task_BoardLED();
 void USART_IRQHandler(void);
+void Task_State();
+/******************************进程函数定义**********************************/
 
-void Task_RGBLED();
+//数值转化函数
+int32_t INT_CHAR_Change(char* ar);
+void CHAR_INT_Change(char* ar2,int32_t b);
 /******************************枚举定义**********************************/
 typedef enum {
     UNO_SLEEP,
     UNO_WAKEUP
 }Uno_State_Typedef;
 
+typedef enum {
+    ZERO_ERROR,
+    ERROR_TaskInitFalse,
+    ERROR_DeviceInitFalse,
+}Uno_ERROR_Typedef;
 /******************************变量定义**********************************/
 extern char USART_Buffer[USART_Buffer_STK];
 extern Uno_State_Typedef UnoState; 
+extern Uno_ERROR_Typedef UnoError; 
 
 #endif 
