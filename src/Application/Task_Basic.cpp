@@ -16,6 +16,8 @@ void Task_State()
                 vTaskDelay(50/portTICK_PERIOD_MS);
                 Uno_Waiting();
                 UART_SendByte(0,0x01);
+                UART_SendString(0,"Wait");
+                UART_SendInt(0,128);
                 digitalWrite(LED_BOARD,LOW);
                 vTaskDelay(450/portTICK_PERIOD_MS);
             }

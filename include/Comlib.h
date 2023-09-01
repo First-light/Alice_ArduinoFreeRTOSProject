@@ -75,9 +75,9 @@ void Process_Frame_COM(COMFrame*, Arduino_COM_typedef*);
 void COM_Write(uint8_t*,uint8_t,Arduino_COM_typedef*);
 
 void UART_SendByte(uint8_t USARTx,uint8_t data);
-void UART_SendString(uint8_t USARTx,char* string);
-void UART_SendNum_Short(uint8_t USARTx,uint32_t Num);
-//先将int转换为string，再输出，但是最大输出为64位int
+void UART_SendString(uint8_t USARTx,String string);
+void UART_SendInt(uint8_t USARTx,int Num);
+
 
 #endif 
 

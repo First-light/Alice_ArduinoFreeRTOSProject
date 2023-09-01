@@ -189,30 +189,63 @@ void UART_SendByte(uint8_t USARTx,uint8_t data)
     }	
 }
 
-void UART_SendString(uint8_t USARTx,char* string)
+
+void UART_SendString(uint8_t USARTx,String string)
 {
-	 char* str = string;
-	 while(*str)//当str指向的字符不为空，则继续
-	 {
-		 UART_SendByte(USARTx,*str);
-		 str++;//指针
-	 }
+    switch (USARTx)
+    {
+    #ifdef USART_SERIAL0
+        case USART_0:USART_SERIAL0.print(string);break;
+    #endif 
+
+    #ifdef USART_SERIAL1
+        case USART_1:USART_SERIAL1.print(string);break;
+    #endif 
+
+    #ifdef USART_SERIAL2
+        case USART_2:USART_SERIAL2.print(string);break;
+    #endif 
+
+    #ifdef USART_SERIAL3
+        case USART_3:USART_SERIAL3.print(string);break;
+    #endif 
+    
+    #ifdef USART_SERIAL4
+        case USART_4:USART_SERIAL4.print(string);break;
+    #endif 
+
+    default:
+        break;
+    }	
 }
 
-void UART_SendNum_Short(uint8_t USARTx,uint32_t Num)//先将int转换为string，再输出，但是最大输出为64位int
+void UART_SendInt(uint8_t USARTx,int Num)
 {
-	char temp[64] = {'\0'};
-	if ( Num < 0 )
-	{
-		Num = -Num;
-		temp[0] = '-';
-		CHAR_INT_Change(&temp[1],Num);
-	}
-	else
-	{
-		CHAR_INT_Change(temp,Num);
-	} 
-	UART_SendString(USARTx,temp);
+    switch (USARTx)
+    {
+    #ifdef USART_SERIAL0
+        case USART_0:USART_SERIAL0.print(Num);break;
+    #endif 
+
+    #ifdef USART_SERIAL1
+        case USART_1:USART_SERIAL1.print(Num);break;
+    #endif 
+
+    #ifdef USART_SERIAL2
+        case USART_2:USART_SERIAL2.print(Num);break;
+    #endif 
+
+    #ifdef USART_SERIAL3
+        case USART_3:USART_SERIAL3.print(Num);break;
+    #endif 
+    
+    #ifdef USART_SERIAL4
+        case USART_4:USART_SERIAL4.print(Num);break;
+    #endif 
+    default:
+        break;
+    }	
 }
+
 
 /*********--------      end      --------*********/

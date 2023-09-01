@@ -13,6 +13,6 @@ void USART_IRQHandler()//伪中断
         Get_Frame_COM(temp,&MY_USART0);
       }
     }
-    vTaskDelay(100);//每100ms读一次串口，读取255字节
+    vTaskDelay(100/portTICK_PERIOD_MS);//每100ms读一次串口，读取255字节
   }
 }
