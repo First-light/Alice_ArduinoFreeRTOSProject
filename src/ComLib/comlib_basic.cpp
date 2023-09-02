@@ -249,12 +249,31 @@ void UART_SendInt(uint8_t USARTx,int Num)
 
 void UART_SendChars(uint8_t USARTx,char* string)
 {
-	 char* str = string;
-	 while(*str)//当str指向的字符不为空，则继续
-	 {
-		 UART_SendByte(USARTx,*str);
-		 str++;//指针
-	 }
+    switch (USARTx)
+    {
+    #ifdef USART_SERIAL0
+        case USART_0:USART_SERIAL0.print(string);break;
+    #endif 
+
+    #ifdef USART_SERIAL1
+        case USART_1:USART_SERIAL1.print(string);break;
+    #endif 
+
+    #ifdef USART_SERIAL2
+        case USART_2:USART_SERIAL2.print(string);break;
+    #endif 
+
+    #ifdef USART_SERIAL3
+        case USART_3:USART_SERIAL3.print(string);break;
+    #endif 
+    
+    #ifdef USART_SERIAL4
+        case USART_4:USART_SERIAL4.print(string);break;
+    #endif 
+
+    default:
+        break;
+    }	
 }
 
 /*********--------      end      --------*********/

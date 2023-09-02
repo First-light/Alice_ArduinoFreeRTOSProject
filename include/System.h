@@ -10,17 +10,6 @@
 #include <string.h>
 /******************************参数宏定义**********************************/
 #define USART_BaudRate              115200
-
-#define USART_IRQHandler_STK            128
-#define USART_IRQHandler_PRI            0x10
-#define USART_Buffer_STK                128
-
-#define Task_RGBLED_STK                 64
-#define Task_RGBLED_PRI                 0x00
-
-#define Task_State_STK                  128
-#define Task_State_PRI                  0x10
-
 /******************************引脚定义**********************************/
 
 #define RGB_PIN_RED                 9
@@ -49,7 +38,6 @@ typedef enum {
     ERROR_DeviceInitFalse,
 }Uno_ERROR_Typedef;
 /******************************变量定义**********************************/
-extern char USART_Buffer[USART_Buffer_STK];
 extern Uno_State_Typedef UnoState; 
 extern Uno_ERROR_Typedef UnoError; 
 

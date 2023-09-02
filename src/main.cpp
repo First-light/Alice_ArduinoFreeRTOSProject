@@ -2,7 +2,7 @@
 
 Uno_State_Typedef UnoState = UNO_SLEEP; 
 CMDStateTypedef CMDstate = CMD_OFF;
-char CMD_Stack[64] = {0};
+char CMD_Stack[CMD_MAX_STACK] = {0};
 
 StackType_t USART_IRQHandlerStack[USART_IRQHandler_STK];
 StaticTask_t USART_IRQHandler_TCB;
@@ -10,6 +10,8 @@ char USART_Receive_Buffer[USART_Buffer_STK];
 
 StackType_t Task_StateStack[Task_State_STK];
 StaticTask_t Task_State_TCB;
+
+TaskHandle_t Task_CMD_Handle;
 /******************************变量定义**********************************/
 
 void setup() 

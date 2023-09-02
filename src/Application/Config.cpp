@@ -24,9 +24,9 @@ void USART_IRQHandler()//伪中断
       CMD_Stack[count] = '\0';
       if(strcmp(CMD_Stack,"Alice") == 0 && CMDstate == CMD_OFF)
       {
-        CMDstate = CMD_ON;
+        Open_Task_CMD();
       }
     }
-    vTaskDelay(100/portTICK_PERIOD_MS);//每100ms读一次串口，读取255字节
+    vTaskDelay(100/portTICK_PERIOD_MS);//每100ms读一次串口
   }
 }
