@@ -12,6 +12,7 @@ StackType_t Task_StateStack[Task_State_STK];
 StaticTask_t Task_State_TCB;
 
 TaskHandle_t Task_CMD_Handle;
+
 /******************************变量定义**********************************/
 
 void setup() 

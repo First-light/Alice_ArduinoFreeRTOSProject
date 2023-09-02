@@ -38,6 +38,12 @@ void Uno_WakingUp()
   taskEXIT_CRITICAL();            //退出临界区
 }
 
+void Uno_Sleeping()
+{
+  taskENTER_CRITICAL();
+
+  taskEXIT_CRITICAL();   
+}
 
 void Uno_Waiting()
 {
