@@ -9,24 +9,21 @@ void Task_State()
     {
         if(UnoState == UNO_SLEEP)
         {
-            printf("待机中，等待开机信号\n");
+            UART_SendString(USART_LOG,"Uno_Sleep");
             while(UnoState == UNO_SLEEP)
             {
                 digitalWrite(LED_BOARD,HIGH);
                 vTaskDelay(50/portTICK_PERIOD_MS);
                 Uno_Waiting();
-                UART_SendByte(0,0x01);
-                UART_SendString(0,"Wait");
-                UART_SendInt(0,128);
                 digitalWrite(LED_BOARD,LOW);
                 vTaskDelay(450/portTICK_PERIOD_MS);
             }
         }else 
         if(UnoState == UNO_WAKEUP)
         {
-            printf("开机中。。。\n");
+            UART_SendString(USART_LOG,"Uno_Waking :");
             Uno_WakingUp();
-            printf("启动成功\n");
+            printf("Complete !\n");
             while(UnoState == UNO_WAKEUP)vTaskDelay(100/portTICK_PERIOD_MS);
         }
         vTaskDelay(100/portTICK_PERIOD_MS);

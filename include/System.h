@@ -11,7 +11,6 @@
 /******************************参数宏定义**********************************/
 #define USART_BaudRate              115200
 
-//task
 #define USART_IRQHandler_STK            128
 #define USART_IRQHandler_PRI            0x10
 #define USART_Buffer_STK                128
@@ -21,7 +20,9 @@
 
 #define Task_State_STK                  128
 #define Task_State_PRI                  0x10
+
 /******************************引脚定义**********************************/
+
 #define RGB_PIN_RED                 9
 #define RGB_PIN_GREED               10
 #define RGB_PIN_BLUE                11
@@ -30,13 +31,9 @@
 //注意13 11 10 9 8 7号脚pwm有问题
 /******************************初始化函数定义**********************************/
 void Device_Init();
-
-/******************************核心任务函数定义**********************************/
-void Task_BoardLED();
+/******************************核心函数定义**********************************/
 void USART_IRQHandler(void);
 void Task_State();
-/******************************进程函数定义**********************************/
-
 //数值转化函数
 int32_t INT_CHAR_Change(char* ar);
 void CHAR_INT_Change(char* ar2,int32_t b);

@@ -33,7 +33,7 @@
 #define USART_SERIAL4 Serial4
 */
 #define USART_LOG           USART_0
-
+#define USART_LOG_SERIAL    USART_SERIAL0
 
 /* ************************************ 字典声明 **************************************** */
 

@@ -247,5 +247,14 @@ void UART_SendInt(uint8_t USARTx,int Num)
     }	
 }
 
+void UART_SendChars(uint8_t USARTx,char* string)
+{
+	 char* str = string;
+	 while(*str)//当str指向的字符不为空，则继续
+	 {
+		 UART_SendByte(USARTx,*str);
+		 str++;//指针
+	 }
+}
 
 /*********--------      end      --------*********/

@@ -77,6 +77,7 @@ void COM_Write(uint8_t*,uint8_t,Arduino_COM_typedef*);
 void UART_SendByte(uint8_t USARTx,uint8_t data);
 void UART_SendString(uint8_t USARTx,String string);
 void UART_SendInt(uint8_t USARTx,int Num);
+void UART_SendChars(uint8_t USARTx,char* string);
 
 
 #endif 

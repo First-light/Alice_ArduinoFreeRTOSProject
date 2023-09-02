@@ -1,19 +1,16 @@
-#include "ComProplist.h"
+#include "Include.h"
 
-//任务及内存分配
-char USART_Receive_Buffer[USART_Buffer_STK];
-
-Uno_ERROR_Typedef UnoError = ZERO_ERROR; 
 Uno_State_Typedef UnoState = UNO_SLEEP; 
-
-//核心任务
+CMDStateTypedef CMDstate = CMD_OFF;
+char CMD_Stack[64] = {0};
 
 StackType_t USART_IRQHandlerStack[USART_IRQHandler_STK];
 StaticTask_t USART_IRQHandler_TCB;
+char USART_Receive_Buffer[USART_Buffer_STK];
 
 StackType_t Task_StateStack[Task_State_STK];
 StaticTask_t Task_State_TCB;
-// Task_State
+/******************************变量定义**********************************/
 
 void setup() 
 {
