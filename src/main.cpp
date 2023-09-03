@@ -1,4 +1,20 @@
+/**
+  ******************************************************************************
+  * @file    main.cpp
+  * @author  徐哲轩
+  * @brief   主函数
+  * @verbatim
+  *         FreeRTOS基本框架
+  *         支持Arduino Uno，Mega等Arduino 系列板
+  *         最低可在2KB RAM下运行，若RAM过小可能出现BUG
+  *         基于vscode 的 platformio 开发平台
+  *         最后一次修改于2023/9/3
+  * @endverbatim
+  ******************************************************************************  
+*/ 
+
 #include "Include.h"
+/******************************变量定义**********************************/
 
 Uno_State_Typedef UnoState = UNO_SLEEP; 
 CMDStateTypedef CMDstate = CMD_OFF;
@@ -13,14 +29,14 @@ StaticTask_t Task_State_TCB;
 
 TaskHandle_t Task_CMD_Handle;
 
-/******************************变量定义**********************************/
+HandleList* Tasks = NULL;
 
+
+/******************************主函数**********************************/
 void setup() 
 {
   Device_Init();
-
-  printf("硬件初始化完成！");
-
+  UART_SendString(USART_LOG,"Device Ready\n");
   xTaskCreateStatic(  (TaskFunction_t     ) USART_IRQHandler,
                       (const char *const  ) "USART_IRQHandler",
                       (const uint32_t     ) USART_IRQHandler_STK,
@@ -37,11 +53,12 @@ void setup()
                     (StackType_t *const ) Task_StateStack,  
                     (StaticTask_t*const ) &Task_State_TCB ); 
 
-    vTaskStartScheduler();  
-    printf("操作系统初始化完成！");
+  vTaskStartScheduler();  
+  UART_SendString(USART_LOG,"Main Task Ready\n");
+  UART_SendString(USART_LOG,"Wait Your Open\n");
 }
 
 void loop() 
 {
-
+  //不需要写东西
 }

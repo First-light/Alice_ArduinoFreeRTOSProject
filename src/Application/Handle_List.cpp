@@ -1,8 +1,16 @@
 #include "Handle_List.h"
-
-void HList_Insert_T(HandleList* List,TaskHandle_t* H)
+/**
+  ******************************************************************************
+  * @file    Handle_List.cpp
+  * @author  徐哲轩
+  * @brief   任务块链表
+  * @verbatim
+  * @endverbatim
+  ******************************************************************************  
+*/ 
+void HList_Insert_T(HandleList* List,TaskHandle_t* H)//尾插节点，只需要一个链表头就可以创建
 {
-    if(List == NULL)
+    if(List == NULL)//如果链表无节点，创建一个节点
     {
         HandleList  *L;
         L = (HandleList*)malloc(sizeof(HandleList));
@@ -10,7 +18,7 @@ void HList_Insert_T(HandleList* List,TaskHandle_t* H)
         L->Handle = H;
         List = L;
     }
-    else
+    else//如果链表有节点，尾插
     {
         HandleList * pre;
         pre = List ;
@@ -26,7 +34,7 @@ void HList_Insert_T(HandleList* List,TaskHandle_t* H)
     }
 }
 
-void HList_TaskOverALL(HandleList* List)
+void HList_TaskOverALL(HandleList* List)//删除链表里所有记录的任务，并删除链表
 {
     HandleList* pre = List;
     do{

@@ -1,9 +1,15 @@
 /**
   ******************************************************************************
-  * @file    comlib_command.cpp
+  * @file    TJClib.cpp
   * @author  徐哲轩
-  * @brief   串口发送函数
+  * @brief   串口屏
   * @verbatim
   * @endverbatim
   ******************************************************************************  
 */ 
+#include "Comlib.h"
+
+#ifdef USE_DEV_TJC
+
+
+#endif

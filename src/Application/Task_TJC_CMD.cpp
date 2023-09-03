@@ -1,22 +1,15 @@
-/**
-  ******************************************************************************
-  * @file    task_CMD.cpp
-  * @author  徐哲轩
-  * @brief   命令行
-  * @verbatim
-  * @endverbatim
-  ******************************************************************************  
-*/ 
-
 #include "ComProplist.h"
 #include "TaskBasic.h"
 
+#ifdef USE_DEV_TJC
+    
 typedef enum{
     LAN_NULL,
     LAN_UNO_WAKEUP,
     LAN_UNO_SLEEP,
     LAN_ALICE_BYE,
 }LanguageType;
+
 typedef struct language {
     const char* code;
     LanguageType type;
@@ -155,3 +148,5 @@ void Open_Task_CMD(void)
                 (TaskHandle_t      *) &Task_CMD_Handle);
     taskEXIT_CRITICAL();
 }
+
+#endif 
